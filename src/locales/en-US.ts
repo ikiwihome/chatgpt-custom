@@ -26,7 +26,7 @@ export default {
     failed: 'Failed',
     verify: 'Verify',
     unauthorizedTips: 'Unauthorized, please verify first.',
-		stopResponding: 'Stop Responding',
+    stopResponding: 'Stop Responding',
   },
   chat: {
     newChatButton: 'New Chat',
@@ -60,8 +60,6 @@ export default {
     name: 'Name',
     description: 'Description',
     role: 'Role',
-    temperature: 'Temperature',
-    top_p: 'Top_p',
     resetUserInfo: 'Reset UserInfo',
     chatHistory: 'ChatHistory',
     theme: 'Theme',
@@ -72,7 +70,9 @@ export default {
     socks: 'Socks',
     httpsProxy: 'HTTPS Proxy',
     balance: 'API Balance',
-    monthlyUsage: 'Monthly Usage',
+    apiKey: 'API-KEY',
+    accessToken: 'accessToken',
+    modal: 'Modal',
   },
   store: {
     siderButton: 'Prompt Store',

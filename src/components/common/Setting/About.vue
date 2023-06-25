@@ -11,7 +11,7 @@ interface ConfigState {
   apiModel?: string
   socksProxy?: string
   httpsProxy?: string
-  usage?: string
+  balance?: string
 }
 
 const authStore = useAuthStore()
@@ -49,7 +49,7 @@ onMounted(() => {
           此项目开源于
           <a
             class="text-blue-600 dark:text-blue-500"
-            href="https://github.com/ikiwihome/chatgpt-webui"
+            href="https://github.com/ikiwihome/chatgpt-custom"
             target="_blank"
           >
             GitHub
@@ -62,7 +62,7 @@ onMounted(() => {
       </div>
       <p>{{ $t("setting.api") }}：{{ config?.apiModel ?? '-' }}</p>
       <p v-if="isChatGPTAPI">
-        {{ $t("setting.monthlyUsage") }}：{{ config?.usage ?? '-' }}
+        {{ $t("setting.balance") }}：{{ config?.balance ?? '-' }}
       </p>
       <p v-if="!isChatGPTAPI">
         {{ $t("setting.reverseProxy") }}：{{ config?.reverseProxy ?? '-' }}

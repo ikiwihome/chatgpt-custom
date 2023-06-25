@@ -15,9 +15,9 @@ export interface UserState {
 export function defaultSetting(): UserState {
   return {
     userInfo: {
-      avatar: 'https://i.postimg.cc/YSYB8pBW/avatar.jpg',
-      name: 'ikiwi',
-      description: 'View on <a href="https://ikiwi.cc" class="text-blue-500" target="_blank" >ikiwi.cc</a>',
+      avatar: 'https://img.icons8.com/nolan/140/chatgpt.png',
+      name: 'OpenAI ChatGPT',
+      description: 'View on <a href="https://platform.openai.com/docs/models/overview" class="text-blue-500" target="_blank" >OpenAI</a>',
     },
   }
 }

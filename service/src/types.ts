@@ -4,8 +4,10 @@ export interface RequestProps {
   prompt: string
   options?: ChatContext
   systemMessage: string
-  temperature?: number
-  top_p?: number
+	apiKey: string
+	accessToken: string
+	modal: string
+
 }
 
 export interface ChatContext {
@@ -28,7 +30,7 @@ export interface ModelConfig {
   timeoutMs?: number
   socksProxy?: string
   httpsProxy?: string
-  usage?: string
+  balance?: string
 }
 
 export type ApiModel = 'ChatGPTAPI' | 'ChatGPTUnofficialProxyAPI' | undefined
