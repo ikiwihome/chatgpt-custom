@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import {computed, ref} from 'vue'
-import {NButton, NInput, NSelect, useMessage} from 'naive-ui'
+import { computed, ref } from 'vue'
+import { NButton, NInput, NSelect, useMessage } from 'naive-ui'
 import { useSettingStore } from '@/store'
 import type { SettingsState } from '@/store/modules/settings/helper'
 import { t } from '@/locales'
 import type { KeyInfo, Modal } from '@/store/modules/key/helper'
-import {useKeyStore} from "@/store/modules/key";
+import { useKeyStore } from "@/store/modules/key";
 
 const settingStore = useSettingStore()
 
@@ -31,15 +31,20 @@ const modal = computed({
 
 const modalOptions: { label: string; key: Modal; value: Modal }[] = [
 	{ label: 'gpt-4', key: 'gpt-4', value: 'gpt-4' },
+	{ label: 'gpt-4-0613', key: 'gpt-4-0613', value: 'gpt-4-0613' },
 	{ label: 'gpt-4-32k', key: 'gpt-4-32k', value: 'gpt-4-32k' },
+	{ label: 'gpt-4-32k-0613', key: 'gpt-4-32k-0613', value: 'gpt-4-32k-0613' },
 	{ label: 'gpt-3.5-turbo', key: 'gpt-3.5-turbo', value: 'gpt-3.5-turbo' },
+	{ label: 'gpt-3.5-turbo-16k', key: 'gpt-3.5-turbo-16k', value: 'gpt-3.5-turbo-16k' },
+	{ label: 'gpt-3.5-turbo-0613', key: 'gpt-3.5-turbo-0613', value: 'gpt-3.5-turbo-0613' },
+	{ label: 'gpt-3.5-turbo-16k-0613', key: 'gpt-3.5-turbo-16k-0613', value: 'gpt-3.5-turbo-16k-0613' },
 	{ label: 'text-davinci-003', key: 'text-davinci-003', value: 'text-davinci-003' },
 	{ label: 'code-davinci-002', key: 'code-davinci-002', value: 'code-davinci-002' },
 ]
 
 function updateSettings(options: Partial<SettingsState>) {
-  settingStore.updateSetting(options)
-  ms.success(t('common.success'))
+	settingStore.updateSetting(options)
+	ms.success(t('common.success'))
 }
 
 function updateKeyInfo(options: Partial<KeyInfo>) {
@@ -48,25 +53,25 @@ function updateKeyInfo(options: Partial<KeyInfo>) {
 }
 
 function handleReset() {
-  settingStore.resetSetting()
+	settingStore.resetSetting()
 	keyStore.resetKeyInfo()
-  ms.success(t('common.success'))
-  window.location.reload()
+	ms.success(t('common.success'))
+	window.location.reload()
 }
 </script>
 
 <template>
-  <div class="p-4 space-y-5 min-h-[200px]">
-    <div class="space-y-6">
-      <div class="flex items-center space-x-4">
-        <span class="flex-shrink-0 w-[100px]">{{ $t('setting.role') }}</span>
-        <div class="flex-1">
-          <NInput v-model:value="systemMessage" type="textarea" :autosize="{ minRows: 1, maxRows: 4 }" />
-        </div>
-        <NButton size="tiny" text type="primary" @click="updateSettings({ systemMessage })">
-          {{ $t('common.save') }}
-        </NButton>
-      </div>
+	<div class="p-4 space-y-5 min-h-[200px]">
+		<div class="space-y-6">
+			<div class="flex items-center space-x-4">
+				<span class="flex-shrink-0 w-[100px]">{{ $t('setting.role') }}</span>
+				<div class="flex-1">
+					<NInput v-model:value="systemMessage" type="textarea" :autosize="{ minRows: 1, maxRows: 4 }" />
+				</div>
+				<NButton size="tiny" text type="primary" @click="updateSettings({ systemMessage })">
+					{{ $t('common.save') }}
+				</NButton>
+			</div>
 			<div class="flex items-center space-x-4">
 				<span class="flex-shrink-0 w-[100px]">{{ $t('setting.apiKey') }}</span>
 				<div class="w-[230px]">
@@ -75,7 +80,8 @@ function handleReset() {
 				<NButton size="tiny" text type="primary" @click="updateKeyInfo({ apiKey })">
 					{{ $t('common.save') }}
 				</NButton>
-				<a href='https://platform.openai.com/overview' class="text-blue-600 dark:text-blue-500" target="_blank">获取 apiKey</a>
+				<a href='https://platform.openai.com/overview' class="text-blue-600 dark:text-blue-500" target="_blank">获取
+					apiKey</a>
 			</div>
 			<div class="flex items-center space-x-4">
 				<span class="flex-shrink-0 w-[100px]">{{ $t('setting.accessToken') }}</span>
@@ -85,25 +91,22 @@ function handleReset() {
 				<NButton size="tiny" text type="primary" @click="updateKeyInfo({ accessToken })">
 					{{ $t('common.save') }}
 				</NButton>
-				<a href='https://chat.openai.com/api/auth/session' class="text-blue-600 dark:text-blue-500" target="_blank">获取 accessToken</a>
+				<a href='https://chat.openai.com/api/auth/session' class="text-blue-600 dark:text-blue-500"
+					target="_blank">获取 accessToken</a>
 			</div>
 			<div class="flex items-center space-x-4">
 				<span class="flex-shrink-0 w-[100px]">{{ $t('setting.modal') }}</span>
 				<div class="flex flex-wrap items-center gap-4">
-					<NSelect
-						style="width: 200px"
-						:value="modal"
-						:options="modalOptions"
-						@update-value="value => keyStore.setModal(value)"
-					/>
+					<NSelect style="width: 200px" :value="modal" :options="modalOptions"
+						@update-value="value => keyStore.setModal(value)" />
 				</div>
 			</div>
-      <div class="flex items-center space-x-4">
-        <span class="flex-shrink-0 w-[100px]">&nbsp;</span>
-        <NButton size="small" @click="handleReset">
-          {{ $t('common.reset') }}
-        </NButton>
-      </div>
-    </div>
-  </div>
+			<div class="flex items-center space-x-4">
+				<span class="flex-shrink-0 w-[100px]">&nbsp;</span>
+				<NButton size="small" @click="handleReset">
+					{{ $t('common.reset') }}
+				</NButton>
+			</div>
+		</div>
+	</div>
 </template>

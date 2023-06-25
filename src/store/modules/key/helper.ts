@@ -2,12 +2,12 @@ import { ss } from '@/utils/storage'
 
 const LOCAL_NAME = 'keyStorage'
 
-export type Modal = 'gpt-4' | 'gpt-4-32k' | 'gpt-3.5-turbo' | 'text-davinci-003' | 'code-davinci-002'
+export type Modal = 'gpt-4' | 'gpt-4-0613' | 'gpt-4-32k' | 'gpt-4-32k-0613' | 'gpt-3.5-turbo' | 'gpt-3.5-turbo-16k' | 'gpt-3.5-turbo-0613' | 'gpt-3.5-turbo-16k-0613' | 'text-davinci-003' | 'code-davinci-002'
 
 export interface KeyInfo {
   apiKey: string
-	accessToken: string
-	modal: Modal
+  accessToken: string
+  modal: Modal
 }
 
 export interface KeyState {
@@ -17,9 +17,9 @@ export interface KeyState {
 export function defaultSetting(): KeyState {
   return {
     keyInfo: {
-			apiKey: '',
-			accessToken: '',
-			modal: 'gpt-3.5-turbo',
+      apiKey: '',
+      accessToken: '',
+      modal: 'gpt-3.5-turbo-16k-0613',
     },
   }
 }
