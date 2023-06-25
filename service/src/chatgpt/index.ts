@@ -81,7 +81,7 @@ let api: ChatGPTAPI | ChatGPTUnofficialProxyAPI
 
     options.apiReverseProxyUrl = isNotEmptyString(process.env.API_REVERSE_PROXY)
       ? process.env.API_REVERSE_PROXY
-      : 'https://bypass.churchless.tech/api/conversation'
+      : 'http://go-chatgpt-api:8080/chatgpt/conversation'
 
     setupProxy(options)
 
@@ -95,54 +95,54 @@ async function chatReplyProcess(options: RequestOptions) {
   try {
     let options: SendMessageOptions = { timeoutMs }
 
-		if (isNotEmptyString(apiKey)) {
-			const OPENAI_API_BASE_URL = 'https://api.openai.com'
-			const model = modal
+    if (isNotEmptyString(apiKey)) {
+      const OPENAI_API_BASE_URL = 'https://openai-2zn.pages.dev/api'
+      const model = modal
 
-			const options: ChatGPTAPIOptions = {
-				apiKey: apiKey,
-				completionParams: { model },
-				debug: !disableDebug,
-			}
+      const options: ChatGPTAPIOptions = {
+        apiKey: apiKey,
+        completionParams: { model },
+        debug: !disableDebug,
+      }
 
-			// increase max token limit if use gpt-4
-			if (model.toLowerCase().includes('gpt-4')) {
-				// if use 32k model
-				if (model.toLowerCase().includes('32k')) {
-					options.maxModelTokens = 32768
-					options.maxResponseTokens = 8192
-				}
-				else {
-					options.maxModelTokens = 8192
-					options.maxResponseTokens = 2048
-				}
-			}
+      // increase max token limit if use gpt-4
+      if (model.toLowerCase().includes('gpt-4')) {
+        // if use 32k model
+        if (model.toLowerCase().includes('32k')) {
+          options.maxModelTokens = 32768
+          options.maxResponseTokens = 8192
+        }
+        else {
+          options.maxModelTokens = 8192
+          options.maxResponseTokens = 2048
+        }
+      }
 
-			if (isNotEmptyString(OPENAI_API_BASE_URL))
-				options.apiBaseUrl = `${OPENAI_API_BASE_URL}/v1`
+      if (isNotEmptyString(OPENAI_API_BASE_URL))
+        options.apiBaseUrl = `${OPENAI_API_BASE_URL}/v1`
 
-			setupProxy(options)
+      setupProxy(options)
 
-			api = new ChatGPTAPI({ ...options })
-			apiModel = 'ChatGPTAPI'
-		}
-		else {
-			const OPENAI_API_MODEL = modal
-			const options: ChatGPTUnofficialProxyAPIOptions = {
-				accessToken: accessToken,
-				debug: !disableDebug,
-			}
+      api = new ChatGPTAPI({ ...options })
+      apiModel = 'ChatGPTAPI'
+    }
+    else {
+      const OPENAI_API_MODEL = modal
+      const options: ChatGPTUnofficialProxyAPIOptions = {
+        accessToken: accessToken,
+        debug: !disableDebug,
+      }
 
-			if (isNotEmptyString(OPENAI_API_MODEL))
-				options.model = OPENAI_API_MODEL
+      if (isNotEmptyString(OPENAI_API_MODEL))
+        options.model = OPENAI_API_MODEL
 
-			options.apiReverseProxyUrl = 'https://bypass.churchless.tech/api/conversation'
+      options.apiReverseProxyUrl = 'http://go-chatgpt-api:8080/chatgpt/conversation'
 
-			setupProxy(options)
+      setupProxy(options)
 
-			api = new ChatGPTUnofficialProxyAPI({ ...options })
-			apiModel = 'ChatGPTUnofficialProxyAPI'
-		}
+      api = new ChatGPTUnofficialProxyAPI({ ...options })
+      apiModel = 'ChatGPTUnofficialProxyAPI'
+    }
 
     if (apiModel === 'ChatGPTAPI') {
       if (isNotEmptyString(systemMessage))
@@ -183,7 +183,7 @@ async function fetchBalance() {
 
   const API_BASE_URL = isNotEmptyString(OPENAI_API_BASE_URL)
     ? OPENAI_API_BASE_URL
-    : 'https://api.openai.com'
+    : 'https://openai-2zn.pages.dev/api'
 
   try {
     const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${OPENAI_API_KEY}` }
