@@ -44,17 +44,6 @@ const mobileSafeArea = computed(() => {
   }
   return {}
 })
-
-watch(
-  isMobile,
-  (val) => {
-    appStore.setSiderCollapsed(val)
-  },
-  {
-    immediate: true,
-    flush: 'post',
-  },
-)
 </script>
 
 <template>

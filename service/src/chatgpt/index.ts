@@ -81,7 +81,7 @@ let api: ChatGPTAPI | ChatGPTUnofficialProxyAPI
 
     options.apiReverseProxyUrl = isNotEmptyString(process.env.API_REVERSE_PROXY)
       ? process.env.API_REVERSE_PROXY
-      : 'http://go-chatgpt-api:8080/chatgpt/conversation'
+      : ''
 
     setupProxy(options)
 
@@ -136,7 +136,7 @@ async function chatReplyProcess(options: RequestOptions) {
       if (isNotEmptyString(OPENAI_API_MODEL))
         options.model = OPENAI_API_MODEL
 
-      options.apiReverseProxyUrl = 'http://go-chatgpt-api:8080/chatgpt/conversation'
+      options.apiReverseProxyUrl = ''
 
       setupProxy(options)
 
