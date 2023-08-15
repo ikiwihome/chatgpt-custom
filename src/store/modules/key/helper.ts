@@ -17,9 +17,9 @@ export interface KeyState {
 export function defaultSetting(): KeyState {
   return {
     keyInfo: {
-      apiKey: '',
+      apiKey: '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',
       accessToken: '',
-      modal: 'gpt-3.5-turbo-16k-0613',
+      modal: 'gpt-3.5-turbo',
     },
   }
 }
@@ -32,4 +32,3 @@ export function getLocalState(): KeyState {
 export function setLocalState(setting: KeyState): void {
   ss.set(LOCAL_NAME, setting)
 }
-

@@ -55,7 +55,7 @@ ENV OPENAI_API_BASE_URL="https://openai-2zn.pages.dev/api"
 
 ENV TIMEOUT_MS=300000
 
-ENV OPENAI_API_MODEL=gpt-3.5-turbo-16k-0613
+ENV OPENAI_API_MODEL=gpt-3.5-turbo
 
 EXPOSE 3002
 
