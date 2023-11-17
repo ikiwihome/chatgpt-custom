@@ -96,7 +96,7 @@ async function chatReplyProcess(options: RequestOptions) {
     let options: SendMessageOptions = { timeoutMs }
 
     if (isNotEmptyString(apiKey)) {
-      const OPENAI_API_BASE_URL = 'https://openai-2zn.pages.dev/api'
+      const OPENAI_API_BASE_URL = 'https://openai-forward-mf6x.onrender.com'
       const model = modal
 
       const options: ChatGPTAPIOptions = {
@@ -183,7 +183,7 @@ async function fetchBalance() {
 
   const API_BASE_URL = isNotEmptyString(OPENAI_API_BASE_URL)
     ? OPENAI_API_BASE_URL
-    : 'https://openai-2zn.pages.dev/api'
+    : 'https://openai-forward-mf6x.onrender.com'
 
   try {
     const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${OPENAI_API_KEY}` }
