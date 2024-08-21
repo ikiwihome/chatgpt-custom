@@ -17,8 +17,6 @@ const systemMessage = ref(settingStore.systemMessage ?? '')
 
 const apiKey = ref(keyStore.keyInfo.apiKey ?? '')
 
-// const accessToken = ref(keyStore.keyInfo.accessToken ?? '')
-
 const modal = computed({
   get() {
     return keyStore.keyInfo.modal
@@ -73,20 +71,9 @@ function handleReset() {
         <NButton size="tiny" text type="primary" @click="updateKeyInfo({ apiKey })">
           {{ $t('common.save') }}
         </NButton>
-        <a href="https://platform.openai.com/overview" class="text-blue-600 dark:text-blue-500" target="_blank">获取
+        <a href="https://wildcard.com.cn/chatgpt" class="text-blue-600 dark:text-blue-500" target="_blank">获取
           apiKey</a>
       </div>
-      <!-- <div class="flex items-center space-x-4">
-				<span class="flex-shrink-0 w-[100px]">{{ $t('setting.accessToken') }}</span>
-				<div class="w-[230px]">
-					<NInput v-model:value="accessToken" placeholder="次选，反向代理，API-KEY需留空" />
-				</div>
-				<NButton size="tiny" text type="primary" @click="updateKeyInfo({ accessToken })">
-					{{ $t('common.save') }}
-				</NButton>
-				<a href='https://chat.openai.com/api/auth/session' class="text-blue-600 dark:text-blue-500"
-					target="_blank">获取 accessToken</a>
-			</div> -->
       <div class="flex items-center space-x-4">
         <span class="flex-shrink-0 w-[100px]">{{ $t('setting.modal') }}</span>
         <div class="flex flex-wrap items-center gap-4">
