@@ -2,7 +2,7 @@ import { ss } from '@/utils/storage'
 
 const LOCAL_NAME = 'keyStorage'
 
-export type Modal = 'gpt-4' | 'gpt-4-0613' | 'gpt-4-32k' | 'gpt-4-32k-0613' | 'gpt-3.5-turbo' | 'gpt-3.5-turbo-16k' | 'gpt-3.5-turbo-0613' | 'gpt-3.5-turbo-16k-0613' | 'text-davinci-003' | 'code-davinci-002'
+export type Modal = 'gpt-4o' | 'gpt-4o-mini' | 'gpt-4-turbo' | 'gpt-3.5-turbo'
 
 export interface KeyInfo {
   apiKey: string
@@ -17,9 +17,9 @@ export interface KeyState {
 export function defaultSetting(): KeyState {
   return {
     keyInfo: {
-      apiKey: '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',
+      apiKey: 'sk-Xaw850bb979df7cf592636fb512c0d5002103c72107ciuma',
       accessToken: '',
-      modal: 'gpt-3.5-turbo',
+      modal: 'gpt-4o',
     },
   }
 }

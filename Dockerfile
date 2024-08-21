@@ -51,7 +51,7 @@ COPY --from=frontend /app/dist /app/public
 
 COPY --from=backend /app/build /app/build
 
-ENV OPENAI_API_BASE_URL="https://openai-forward-mf6x.onrender.com"
+ENV OPENAI_API_BASE_URL="https://api.gptsapi.net"
 
 ENV TIMEOUT_MS=300000
 

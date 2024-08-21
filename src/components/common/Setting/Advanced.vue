@@ -29,16 +29,10 @@ const modal = computed({
 })
 
 const modalOptions: { label: string; key: Modal; value: Modal }[] = [
-  { label: 'gpt-4', key: 'gpt-4', value: 'gpt-4' },
-  { label: 'gpt-4-0613', key: 'gpt-4-0613', value: 'gpt-4-0613' },
-  { label: 'gpt-4-32k', key: 'gpt-4-32k', value: 'gpt-4-32k' },
-  { label: 'gpt-4-32k-0613', key: 'gpt-4-32k-0613', value: 'gpt-4-32k-0613' },
+  { label: 'gpt-4o', key: 'gpt-4o', value: 'gpt-4o' },
+  { label: 'gpt-4o-mini', key: 'gpt-4o-mini', value: 'gpt-4o-mini' },
+  { label: 'gpt-4-turbo', key: 'gpt-4-turbo', value: 'gpt-4-turbo' },
   { label: 'gpt-3.5-turbo', key: 'gpt-3.5-turbo', value: 'gpt-3.5-turbo' },
-  { label: 'gpt-3.5-turbo-16k', key: 'gpt-3.5-turbo-16k', value: 'gpt-3.5-turbo-16k' },
-  { label: 'gpt-3.5-turbo-0613', key: 'gpt-3.5-turbo-0613', value: 'gpt-3.5-turbo-0613' },
-  { label: 'gpt-3.5-turbo-16k-0613', key: 'gpt-3.5-turbo-16k-0613', value: 'gpt-3.5-turbo-16k-0613' },
-  { label: 'text-davinci-003', key: 'text-davinci-003', value: 'text-davinci-003' },
-  { label: 'code-davinci-002', key: 'code-davinci-002', value: 'code-davinci-002' },
 ]
 
 function updateSettings(options: Partial<SettingsState>) {
